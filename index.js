@@ -19,19 +19,16 @@ function setNewDiv(name,link,definition)
     const widgetName=document.createElement('p');
     const widgetDefinition=document.createElement('p');
 
-
     // create widget container
     container.appendChild(widgetDiv)
     widgetName.appendChild(widgetLink)
     widgetDiv.appendChild(widgetName)
-   
     widgetDiv.appendChild(widgetDefinition)
 
     //add class to tag
     widgetDiv.classList.add('border','p-2', 'bg-secondary','text-white','mb-2')
-    widgetName.innerHTML=`<a href="${link}" class='text-decoration-none text-white' >${name}</a>`
-   // widgetName.classList.add('text-decoration-none','text-white')
 
+    widgetName.innerHTML=`<a href="${link}" class='text-decoration-none text-white' >${name}</a>`
 
     if(definition == null)
     {
@@ -39,12 +36,9 @@ function setNewDiv(name,link,definition)
     }else{
         widgetDefinition.innerText='description : ' +definition;
     }
-    
-    
 }
 
 // add fetch in the onclick
-
 
 button.addEventListener('click', event=>
 {  
@@ -61,53 +55,9 @@ button.addEventListener('click', event=>
     {   jsondata.map(repo=>
         {   
             setNewDiv(repo.name,repo.html_url,repo.description)
-            console.log(repo);
-            console.log(repo.html_url);
-            console.log(repo.description);
            
         }
-        
         )
-        
-        
     })
-    
-
-
 })
-class RepoBox
-{
-    constructor(div,link,definition,date)
-    {
-        this.div=div;
-        this.link=link;
-        this.definition=definition;
-        this.date=date;
-    }
-    
-  setWidget() 
-  {
-    
-
-  }
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
