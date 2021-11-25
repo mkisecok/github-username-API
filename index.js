@@ -12,24 +12,32 @@ let username;
 
 let url;
 
-function setNewDiv(name,link)
+function setNewDiv(name,link,definition)
 {
     const widgetDiv=document.createElement('div');
     const widgetLink=document.createElement('a');
+    const widgetName=document.createElement('p');
     const widgetDefinition=document.createElement('p');
-    const widgetUpdate=document.createElement('span');
 
 
     // create widget container
     container.appendChild(widgetDiv)
-    widgetDefinition.appendChild(widgetLink)
+    widgetName.appendChild(widgetLink)
+    widgetDiv.appendChild(widgetName)
+   
     widgetDiv.appendChild(widgetDefinition)
-    widgetDiv.appendChild(widgetUpdate)
 
     //add class to tag
     widgetDiv.classList.add('border','p-2')
-    widgetDefinition.innerHTML=`<a href=\"${link}\">${name}</a>`
-    //widgetUpdate=
+    widgetName.innerHTML=`<a href=\"${link}\">${name}</a>`
+    if(definition == null)
+    {
+        widgetDefinition.innerText='description : null'
+    }else{
+        widgetDefinition.innerText='description : ' +definition;
+    }
+    
+    
 }
 
 // add fetch in the onclick
@@ -49,10 +57,10 @@ button.addEventListener('click', event=>
 
     {   jsondata.map(repo=>
         {   
-            setNewDiv(repo.name,repo.html_url)
-            console.log(repo.name);
+            setNewDiv(repo.name,repo.html_url,repo.description)
+            console.log(repo);
             console.log(repo.html_url);
-            console.log(repo.updated_at);
+            console.log(repo.description);
            
         }
         
