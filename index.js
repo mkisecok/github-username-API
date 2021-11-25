@@ -1,38 +1,39 @@
 
 // create all variables 
-const body=document.querySelector('body')
-const div=document.createElement('div');
-const header=document.createElement('h1');
-const input=document.createElement('input');
-const button=document.createElement('button');
-// add all tag in div
-body.appendChild(header)
-body.appendChild(div)
+const body=document.querySelector('body');
 
-div.appendChild(input);
-div.appendChild(button);
+const container=document.querySelector('.container');
 
-// set attribute and class
-div.classList.add('container','mt-2', 'mx-auto', 'd-flex');
+const input=document.querySelector('input');
 
-header.classList.add('text-center', 'mt-5');
+const button=document.querySelector('button');
 
-input.setAttribute('type','class', 'placeholder', 'aria-label');
-input.type='text';
-input.classList.add('form-control' ,'me-2');
-input.placeholder='username';
+let username;
 
-button.setAttribute('type','text');
-//button.type='text'
-button.classList.add('btn', 'btn-primary', 'ms-4');
+let url;
 
-// add text in h1 and button
-header.innerText='Github Username Widget';
-button.innerText='Submit';
+function setNewDiv(name,link)
+{
+    const widgetDiv=document.createElement('div');
+    const widgetLink=document.createElement('a');
+    const widgetDefinition=document.createElement('p');
+    const widgetUpdate=document.createElement('span');
+
+
+    // create widget container
+    container.appendChild(widgetDiv)
+    widgetDefinition.appendChild(widgetLink)
+    widgetDiv.appendChild(widgetDefinition)
+    widgetDiv.appendChild(widgetUpdate)
+
+    //add class to tag
+    widgetDiv.classList.add('border','p-2')
+    widgetDefinition.innerHTML=`<a href=\"${link}\">${name}</a>`
+    //widgetUpdate=
+}
 
 // add fetch in the onclick
-let username;
-let url;
+
 
 button.addEventListener('click', event=>
 {  
@@ -48,8 +49,10 @@ button.addEventListener('click', event=>
 
     {   jsondata.map(repo=>
         {   
-            
+            setNewDiv(repo.name,repo.html_url)
+            console.log(repo.name);
             console.log(repo.html_url);
+            console.log(repo.updated_at);
            
         }
         
@@ -61,23 +64,24 @@ button.addEventListener('click', event=>
 
 
 })
-// class RepoBox
-// {
-//     constructor(div,link,definition,date)
-//     {
-//         this.div=div;
-//         this.link=link;
-//         this.definition=definition;
-//         this.date=date;
-//     }
+class RepoBox
+{
+    constructor(div,link,definition,date)
+    {
+        this.div=div;
+        this.link=link;
+        this.definition=definition;
+        this.date=date;
+    }
     
-//   setWidget() 
-//   {
-//     const di
-//   }
+  setWidget() 
+  {
+    
+
+  }
 
 
-// }
+}
 
 
 
