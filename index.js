@@ -28,8 +28,11 @@ function setNewDiv(name,link,definition)
     widgetDiv.appendChild(widgetDefinition)
 
     //add class to tag
-    widgetDiv.classList.add('border','p-2')
-    widgetName.innerHTML=`<a href=\"${link}\">${name}</a>`
+    widgetDiv.classList.add('border','p-2', 'bg-secondary','text-white','mb-2')
+    widgetName.innerHTML=`<a href="${link}" class='text-decoration-none text-white' >${name}</a>`
+   // widgetName.classList.add('text-decoration-none','text-white')
+
+
     if(definition == null)
     {
         widgetDefinition.innerText='description : null'
